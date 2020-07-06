@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class TestWorker
-  # include Sidekiq::Worker
+  include Sidekiq::Worker
 
-  def perform
-    sleep 1
-  end
+  def perform; end
 end
