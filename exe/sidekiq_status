@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require "sidekiq_status"
+
+if ARGV[0] == '--help'
+  SidekiqStatus.print_usage
+else
+  SidekiqStatus::View.new.display(ARGV[0])
+  exit
+end
