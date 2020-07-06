@@ -2,6 +2,19 @@
 
 Status of your sidekiq system - useful for Kubernetes Liveness probes
 
+This gem provides an executable `sidekiq_status` to enumerate the state of a running sidekiq system.
+
+This executable will return a 0 exit code if it detects a sidekiq process and a non-zero exit code if no sidekiq process is running.
+
+The above can be used in combination with a Kubernetes liveness probe, e.g.
+
+``` yaml
+livenessProbe:
+  exec:
+    command:
+      - sidekiq_stats
+```
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -36,8 +49,19 @@ Or install it yourself as:
 
 ### Docker & Docker-compose
 
-1. `docker-compose build`
-2. `docker-compose run --rm sidekiq_status bash`
+``` sh
+# build the test container image
+docker-compose build
+# launch a container to run the gem cmd against a live sidekiq system (see Procfile)
+docker-compose up
+```
+
+Alternatively
+
+``` sh
+# get a bash session in the docker container
+docker-compose run --rm sidekiq_status bash
+```
 
 Then, run `bundle exec rspec` or `rake spec` to run the tests.
 
