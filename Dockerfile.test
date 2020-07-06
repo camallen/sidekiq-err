@@ -12,4 +12,7 @@ RUN bundle install
 
 ADD ./ /app
 
+# install the gem locally
+RUN rake install
+
 CMD ["bundle", "exec", "foreman", "start"]
