@@ -2,11 +2,11 @@
 
 Status of your sidekiq system - useful for Kubernetes Liveness probes
 
-This gem provides an executable `sidekiq_status` to enumerate the state of a running sidekiq system.
+This gem provides a binary `sidekiq_status` to enumerate the state of a running sidekiq system.
 
 Heavily inspired by `sidekiqctl`, sadly removed in [sidekiq v6](https://github.com/mperham/sidekiq/blob/74ccba6c68b1df31d615991fb2749fc19de8fbf7/bin/sidekiqctl) - RIP.
 
-This executable will return a 0 exit code if it detects a sidekiq process and a non-zero exit code if no sidekiq process is running.
+This binary will return a 0 exit code if it detects a sidekiq process and a non-zero exit code if no sidekiq process is running.
 
 The above can be used in combination with a Kubernetes liveness probe, e.g.
 
