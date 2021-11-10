@@ -17,10 +17,15 @@ Gem::Specification.new do |spec|
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = spec.homepage
 
-  spec.files         = ['lib/sidekiq_status.rb', 'lib/sidekiq_status/version.rb', 'exe/sidekiq_status']
+  spec.files         = %w[lib/sidekiq_status.rb lib/sidekiq_status/version.rb lib/sidekiq_status/view.rb exe/sidekiq_status]
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
   spec.add_runtime_dependency 'sidekiq', '>= 5.0'
+
+  spec.add_development_dependency 'foreman'
+  spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'rspec'
 end
