@@ -26,7 +26,7 @@ RSpec.describe SidekiqStatus do
     end
   end
 
-  describe '.status', :focus do
+  describe '.status' do
     let(:view_double) { instance_double('SidekiqStatus::View') }
 
     before do
