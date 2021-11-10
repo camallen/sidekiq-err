@@ -89,13 +89,13 @@ module SidekiqStatus
       out = []
       line = ''.dup
       values.each do |value|
-      if (line.length + value.length) > max_length
-        out << line
-        line = ' ' * pad
+        if (line.length + value.length) > max_length
+          out += line
+          line = ' ' * pad
+        end
+        line += "#{value}, "
       end
-      line << value + ', '
-      end
-      out << line[0..-3]
+      out += line[0..-3]
       out.join("\n")
     end
 
