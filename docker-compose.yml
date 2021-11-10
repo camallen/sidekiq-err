@@ -15,6 +15,7 @@ services:
       - gem_cache:/usr/local/bundle
     environment:
       - "REDIS_URL=redis://redis:6379/0"
+      - "USE_PRY=1"
     links:
       - redis:redis
 
