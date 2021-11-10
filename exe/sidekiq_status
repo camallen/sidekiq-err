@@ -1,10 +1,11 @@
 #!/usr/bin/env ruby
 
-require "sidekiq_status"
+require 'sidekiq_status'
+
+require 'pry' if ENV.fetch('USE_PRY', false)
 
 if ARGV[0] == '--help'
-  SidekiqStatus::View.print_usage
+  SidekiqStatus.print_usage
 else
-  SidekiqStatus::View.new.display(ARGV[0])
-  exit
+  SidekiqStatus.status(ARGV[0])
 end
