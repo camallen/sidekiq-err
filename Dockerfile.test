@@ -14,4 +14,4 @@ ADD ./ /app
 # install the gem locally
 RUN rake install
 
-CMD ["bundle", "exec", "foreman", "start"]
+CMD ["./scripts/run_sidekiq_status.sh"]
