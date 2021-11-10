@@ -1,27 +1,8 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 RSpec.describe SidekiqStatus::View do
-  describe '.print_usage' do
-    let(:expected_output) do
-      <<~USAGE
-        sidekiq_status - Sidekiq process stats from the command line.
-
-        Usage: sidekiq_status <section>
-
-               <section> (optional) view a specific section of the status output
-               Valid sections are: all, version, overview, processes, queues
-               Default is 'processes'
-
-      USAGE
-    end
-    it 'prints the help message' do
-      stub_const("#{described_class}::CMD", 'sidekiq_status')
-      expect do
-        described_class.print_usage
-      end.to output(expected_output).to_stdout
-    end
-  end
-
   describe '#display' do
     let(:process_set) do
       instance_double(
@@ -73,6 +54,20 @@ RSpec.describe SidekiqStatus::View do
     end
 
     context "'all' section" do
+      # take care when testing exit codes...
+      # ensure we don't SystemExit: exit here
+      it 'does not raise an error' do
+        expect do
+          described_class.new.display('all')
+        end.not_to raise_error
+      end
+
+      it 'raises an error if invalid section' do
+        expect do
+          described_class.new.display('invalid')
+        end.to raise_error(SidekiqStatus::View::InvalidSection)
+      end
+
       it 'reports the Overview section' do
         expect do
           described_class.new.display('all')
