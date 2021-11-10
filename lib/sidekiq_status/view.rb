@@ -10,7 +10,7 @@ module SidekiqStatus
 
     # TODO: move the section to initiailzer and then call display?
     # e.g. View.new(section='process').display
-    def display(section='processes')
+    def display(section = 'processes')
       if invalid_section?(section)
         msg = "Invalid section for status check: '#{section}'"
         msg += "\nTry one of these: #{self.class.valid_sections.join(', ')}"
@@ -71,7 +71,7 @@ module SidekiqStatus
         columns.each do |col, (dir, width)|
           print q.send(col).public_send(dir, width)
         end
-      puts
+        puts
       end
     end
 
