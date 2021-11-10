@@ -69,8 +69,6 @@ RSpec.describe SidekiqStatus::View do
   end
 
   describe '.all' do
-    # take care when testing exit codes...
-    # ensure we don't SystemExit: exit here
     it 'calls all the sections' do
       allow(view_instance).to receive(:version)
       allow(view_instance).to receive(:overview)
