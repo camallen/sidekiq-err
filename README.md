@@ -54,7 +54,7 @@ Or install it yourself as:
 ``` sh
 # build the test container image
 docker-compose build
-# launch a container to run the gem cmd against a live sidekiq system (see Procfile)
+# launch a container to run the gem cmd against a live sidekiq system (see docker-compose.yml for server)
 docker-compose up
 ```
 
