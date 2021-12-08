@@ -25,7 +25,7 @@ services:
       - gem_cache:/usr/local/bundle
     environment:
       - "REDIS_URL=redis://redis:6379/0"
-    command: ["bundle", "exec", "sidekiq", "-r", "./server_code/por_worker.rb"]
+    command: ["bundle", "exec", "sidekiq", "-v", "-c", "1", "-r", "./server_code/por_worker.rb"]
     links:
       - redis:redis
 

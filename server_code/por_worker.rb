@@ -14,3 +14,8 @@ class PlainOldRuby
     puts "Workin' #{how_hard}"
   end
 end
+
+# schedule some jobs to run in the worker above so we have someting to report
+10.times do |num|
+  PlainOldRuby.perform_async('9 to 5', num)
+end
