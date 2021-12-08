@@ -95,7 +95,7 @@ module SidekiqStatus
         end
         line += "#{value}, "
       end
-      out += line[0..-3]
+      out << line[0..-3]
       out.join("\n")
     end
 
