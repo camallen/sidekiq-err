@@ -18,6 +18,7 @@ RSpec.describe SidekiqStatus do
 
       USAGE
     end
+
     it 'prints the help message' do
       stub_const("#{described_class}::CMD", 'sidekiq_status')
       expect do
