@@ -10,9 +10,11 @@ RSpec.describe SidekiqStatus do
       <<~USAGE
         sidekiq_status - Sidekiq process stats from the command line.
 
-        Usage: sidekiq_status <section>
+        Usage: sidekiq_status [-q] [section]
 
-               <section> (optional) view a specific section of the status output
+               [-q] (optional) do not output text data, rely on exit codes
+
+               [section] (optional) view a specific section of the status output
                Valid sections are: all, version, overview, processes, queues
                Default is 'processes'
 
