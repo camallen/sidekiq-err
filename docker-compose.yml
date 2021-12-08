@@ -8,9 +8,7 @@ services:
     image: sidekiq_status:local
     build:
       context: .
-      # `gem install` doesn't like the filename
-      # Dockerfile without a file ext...WAT!?
-      dockerfile: Dockerfile.test
+      dockerfile: Dockerfile
     volumes:
       - ./:/app
       - gem_cache:/usr/local/bundle
