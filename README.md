@@ -35,7 +35,16 @@ Or install it yourself as:
 
 ## Usage
 
-### Print the default view (processes) of your sidekiq installation
+This gem depends on your Sidekiq setup, e.g. REDIS_URL etc, please ensure this is configured correctly https://github.com/mperham/sidekiq/wiki/Using-Redis
+
+### Test if a Sidekiq server is running
+
+`$ sidekiq-err --alive`
+
+This returns a non-zero exit code if sidekiq isn't running or Redis not available
+
+
+### Print the default view (processes) of your sidekiq server
 
 `$ sidekiq-err --report`
 
