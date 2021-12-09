@@ -4,8 +4,8 @@ services:
     image: redis
     command: redis-server --appendonly yes
 
-  sidekiq-r:
-    image: sidekiq-r:local
+  sidekiq-err:
+    image: sidekiq-err:local
     build:
       context: .
       dockerfile: Dockerfile
@@ -19,7 +19,7 @@ services:
       - redis:redis
 
   sidekiq_server:
-    image: sidekiq-r:local
+    image: sidekiq-err:local
     volumes:
       - ./:/app
       - gem_cache:/usr/local/bundle

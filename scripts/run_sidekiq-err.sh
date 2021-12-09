@@ -3,7 +3,7 @@
 # report status on startup so folks think something is happening
 echo
 sleep 2
-sidekiq-r --report all
+sidekiq-err --report all
 echo
 echo
 
@@ -12,7 +12,7 @@ while :
 do
 	sleep 10
   echo
-  sidekiq-r --report all
+  sidekiq-err --report all
   echo
   echo '---- Hit CTRL+C TO STOP ----'
   echo

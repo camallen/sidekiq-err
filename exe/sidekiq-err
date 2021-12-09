@@ -2,7 +2,7 @@
 
 # frozen_string_literal: true
 
-require 'sidekiq-r'
+require 'sidekiq-err'
 
 require 'pry' if ENV.fetch('USE_PRY', false)
 
@@ -10,17 +10,17 @@ require 'pry' if ENV.fetch('USE_PRY', false)
 begin
   case ARGV[0]
   when '-a', '--alive'
-    SidekiqR.alive?
+    SidekiqErr.alive?
   when '-r', '--report'
-    SidekiqR.status(ARGV[1])
+    SidekiqErr.status(ARGV[1])
   when '-h', '--help'
-    SidekiqR.print_usage
+    SidekiqErr.print_usage
   else
     puts
     puts 'Uknown command, use --help for usage details'
     puts
   end
-rescue SidekiqR::Error, Redis::CannotConnectError, Redis::TimeoutError => e
+rescue SidekiqErr::Error, Redis::CannotConnectError, Redis::TimeoutError => e
   puts "Error: #{e.message}"
   puts
   exit(1)

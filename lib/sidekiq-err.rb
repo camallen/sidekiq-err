@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'sidekiq-r/version'
-require 'sidekiq-r/error'
-require 'sidekiq-r/alive'
-require 'sidekiq-r/view'
+require 'sidekiq-err/version'
+require 'sidekiq-err/error'
+require 'sidekiq-err/alive'
+require 'sidekiq-err/view'
 require 'fileutils'
 require 'sidekiq/api'
 
-module SidekiqR
+module SidekiqErr
   CMD = File.basename($PROGRAM_NAME)
 
   def self.print_usage
@@ -29,10 +29,10 @@ module SidekiqR
 
   def self.status(section = nil)
     section ||= 'all'
-    SidekiqR::View.new(section).display
+    SidekiqErr::View.new(section).display
   end
 
   def self.alive?
-    SidekiqR::Alive.check?
+    SidekiqErr::Alive.check?
   end
 end
