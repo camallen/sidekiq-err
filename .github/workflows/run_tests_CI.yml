@@ -24,3 +24,5 @@ jobs:
           bundler-cache: true
       - name: Run tests
         run: bundle exec rspec
+        env:
+          REDIS_URL: redis://redis:6379/0
