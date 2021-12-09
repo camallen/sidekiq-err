@@ -9,17 +9,17 @@ RSpec.describe SidekiqErr::View do
       size: 1,
       each_with_index: [
         Sidekiq::Process.new(
-          hostname: "a03dc1421fe6",
-          started_at: 1594054991.2349708,
-          pid: 55,
-          tag: '',
-          concurrency: 10,
-          queues: ['default'],
-          labels: [],
-          identity: 'a03dc1421fe6:55:b94b1ede3adf',
-          busy: 0,
-          beat: 1594055026.3869414,
-          quiet: 'false'
+          'hostname' => 'a03dc1421fe6',
+          'started_at' => 1594054991.2349708,
+          'pid' => 55,
+          'tag' => '',
+          'concurrency' => 10,
+          'queues' => ['default'],
+          'labels' => [],
+          'identity' => 'a03dc1421fe6:55:b94b1ede3adf',
+          'busy' => 0,
+          'beat' => 1594055026.3869414,
+          'quiet' => 'false'
         )
       ]
     )
