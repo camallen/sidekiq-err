@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'sidekiq_status/version'
+require 'sidekiq_status/error'
+require 'sidekiq_status/alive'
 require 'sidekiq_status/view'
 require 'fileutils'
 require 'sidekiq/api'
@@ -9,34 +11,28 @@ module SidekiqStatus
   CMD = File.basename($PROGRAM_NAME)
 
   def self.print_usage
-    puts "#{CMD} - Sidekiq process stats from the command line."
+    puts "#{CMD} - Sidekiq process reporting."
     puts
-    puts "Usage: #{CMD} [-q] [section]"
+    puts "Usage: #{CMD}"
     puts
-    puts '       [-q] (optional) do not output text data, rely on exit codes'
+    puts '       -a, --alive'
+    puts '         check if at least 1 Sidekiq process is running'
+    puts '         sets the exit code to 1 if no process if found'
     puts
-    puts '       [section] (optional) view a specific section of the status output'
-    puts "       Valid sections are: #{View.valid_sections.join(', ')}"
-    puts "       Default is 'processes'"
+    puts '       -r, --report [SECTION_NAME]'
+    puts '         view the status report'
+    puts '         SECTION_NAME is optional and filters the report to a specific section'
+    puts "         Valid sections are: #{View.valid_sections.join(', ')}"
+    puts "         Default is 'all'"
     puts
   end
 
   def self.status(section = nil)
-    section ||= 'processes'
+    section ||= 'all'
     SidekiqStatus::View.new.display(section)
-  rescue View::InvalidSection => e
-    puts e.message
-  rescue View::NoProcessFound => e
-    puts e.message
-    # THIS IS the CRUNCHY bit
-    # and what we really need to implement
-    # or let them all fail i guess
-    # we should probably detect that sidekiq server isn't running as a first port of call
-    # then look at other error modes
-    # TODO: isolate known failure modes, redis unavailable, etc
-    #   NOTE: avoid swallowing all errors here
-  #     rescue RedisError, ETC => e
-    #     puts "Couldn't get status: #{e}"
-    #     exit 1
+  end
+
+  def self.alive?
+    SidekiqStatus::Alive.check?
   end
 end
