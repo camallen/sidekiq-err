@@ -17,14 +17,10 @@ module SidekiqStatus
         raise(InvalidSection, msg)
       end
 
-      raise(SidekiqStatus::NoProcessFound, 'No sidekiq process running!') if process_set.size.zero?
-
       send(section)
     end
 
     def all
-      raise(SidekiqStatus::NoProcessFound, 'No sidekiq process running!') if process_set.size.zero?
-
       version
       puts
       overview
