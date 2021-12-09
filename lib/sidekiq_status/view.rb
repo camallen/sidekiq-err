@@ -4,13 +4,17 @@ module SidekiqStatus
   class View
     class InvalidSection < SidekiqStatus::Error; end
 
+    attr_reader :section
+
     def self.valid_sections
       @valid_sections ||= %w[all version overview processes queues].freeze
     end
 
-    # TODO: move the section to initiailzer and then call display?
-    # e.g. View.new(section='process').display
-    def display(section = 'processes')
+    def initialize(section)
+      @section = section
+    end
+
+    def display
       if invalid_section?(section)
         msg = "Invalid section for status check: '#{section}'"
         msg += "\nTry one of these: #{self.class.valid_sections.join(', ')}"

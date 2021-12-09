@@ -29,7 +29,7 @@ module SidekiqStatus
 
   def self.status(section = nil)
     section ||= 'all'
-    SidekiqStatus::View.new.display(section)
+    SidekiqStatus::View.new(section).display
   end
 
   def self.alive?

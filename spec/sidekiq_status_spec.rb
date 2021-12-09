@@ -41,14 +41,19 @@ RSpec.describe SidekiqStatus do
       allow(SidekiqStatus::View).to receive(:new).and_return(view_double)
     end
 
-    it 'calls the view object with the default' do
+    it 'correctly instantiates the view instance with the default section' do
       described_class.status
-      expect(view_double).to have_received(:display).with('all')
+      expect(SidekiqStatus::View).to have_received(:new).with('all')
     end
 
-    it 'calls the view object with the section param' do
+    it 'calls display on the view object' do
+      described_class.status
+      expect(view_double).to have_received(:display)
+    end
+
+    it 'correctly instantiates the view instance with a passed in section param' do
       described_class.status('test')
-      expect(view_double).to have_received(:display).with('test')
+      expect(SidekiqStatus::View).to have_received(:new).with('test')
     end
   end
 end

@@ -46,7 +46,7 @@ RSpec.describe SidekiqStatus::View do
       latency: 0
     )
   end
-  let(:view_instance) { described_class.new }
+  let(:view_instance) { described_class.new('all') }
 
   before do
     allow(Sidekiq::ProcessSet).to receive(:new).and_return(process_set)
@@ -57,13 +57,13 @@ RSpec.describe SidekiqStatus::View do
   describe '.display' do
     it 'raises an error if invalid section' do
       expect do
-        view_instance.display('invalid')
+        described_class.new('invalid').display
       end.to raise_error(SidekiqStatus::View::InvalidSection)
     end
 
-    it 'calls the revelant section method' do
+    it 'calls the revelant default section method' do
       allow(view_instance).to receive(:all)
-      view_instance.display('all')
+      view_instance.display
       expect(view_instance).to have_received(:all).once
     end
   end
