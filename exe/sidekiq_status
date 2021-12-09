@@ -20,7 +20,7 @@ begin
     puts 'Uknown command, use --help for usage details'
     puts
   end
-rescue SidekiqStatus::Error => e
+rescue SidekiqStatus::Error, Redis::CannotConnectError, Redis::TimeoutError => e
   puts "Error: #{e.message}"
   puts
   exit(1)
