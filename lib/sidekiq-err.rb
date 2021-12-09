@@ -16,7 +16,7 @@ module SidekiqErr
     puts "Usage: #{CMD}"
     puts
     puts '       -a, --alive HOSTNAME'
-    puts '         check if the HOSTNAME is presetn in the Sidekiq process list'
+    puts '         check if the HOSTNAME is present in the Sidekiq process list'
     puts '         sets the exit code to 1 if the HOSTNAME process is not found'
     puts
     puts '       -r, --report [SECTION_NAME]'

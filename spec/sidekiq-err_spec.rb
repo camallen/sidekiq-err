@@ -13,7 +13,7 @@ RSpec.describe SidekiqErr do
         Usage: sidekiq-err
 
                -a, --alive HOSTNAME
-                 check if the HOSTNAME is presetn in the Sidekiq process list
+                 check if the HOSTNAME is present in the Sidekiq process list
                  sets the exit code to 1 if the HOSTNAME process is not found
 
                -r, --report [SECTION_NAME]
