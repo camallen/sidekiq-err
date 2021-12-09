@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module SidekiqStatus
+module SidekiqR
   class Alive
     def self.check?
       process_set = Sidekiq::ProcessSet.new

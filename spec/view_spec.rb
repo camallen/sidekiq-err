@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-RSpec.describe SidekiqStatus::View do
+RSpec.describe SidekiqR::View do
   let(:process_set) do
     instance_double(
       'Sidekiq::ProcessSet',
@@ -58,7 +58,7 @@ RSpec.describe SidekiqStatus::View do
     it 'raises an error if invalid section' do
       expect do
         described_class.new('invalid').display
-      end.to raise_error(SidekiqStatus::View::InvalidSection)
+      end.to raise_error(SidekiqR::View::InvalidSection)
     end
 
     it 'calls the revelant default section method' do

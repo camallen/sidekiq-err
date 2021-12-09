@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module SidekiqStatus
+module SidekiqR
   class View
-    class InvalidSection < SidekiqStatus::Error; end
+    class InvalidSection < SidekiqR::Error; end
 
     attr_reader :section
 

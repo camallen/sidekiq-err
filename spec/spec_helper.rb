@@ -1,5 +1,5 @@
 require 'bundler/setup'
-require 'sidekiq_status'
+require 'sidekiq-r'
 require 'pry'
 require 'ostruct'
 

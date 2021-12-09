@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module SidekiqStatus
+module SidekiqR
   class Error < StandardError; end
   class NoProcessFound < Error; end
 end

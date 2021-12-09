@@ -1,8 +1,8 @@
-# sidekiq_status
+# sidekiq-r
 
 Status of your sidekiq system - useful for Kubernetes Liveness probes
 
-This gem provides a binary `sidekiq_status` to enumerate the state of a running sidekiq system.
+This gem provides a binary `sidekiq-r` to enumerate the state of a running sidekiq system.
 
 Heavily inspired by `sidekiqctl`, sadly removed in [sidekiq v6](https://github.com/mperham/sidekiq/blob/74ccba6c68b1df31d615991fb2749fc19de8fbf7/bin/sidekiqctl) - RIP.
 
@@ -14,7 +14,7 @@ The above can be used in combination with a Kubernetes liveness probe, e.g.
 livenessProbe:
   exec:
     command:
-      - sidekiq_stats
+      - sidekiq-r --alive
 ```
 
 ## Installation
@@ -22,7 +22,7 @@ livenessProbe:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'sidekiq_status'
+gem 'sidekiq-r'
 ```
 
 And then execute:
@@ -31,21 +31,21 @@ And then execute:
 
 Or install it yourself as:
 
-`$ gem install sidekiq_status`
+`$ gem install sidekiq-r`
 
 ## Usage
 
 ### Print the default view (processes) of your sidekiq installation
 
-`$ sidekiq_status`
+`$ sidekiq-r --report`
 
 ### Print 'all' section view
 
-`$ sidekiq_status all`
+`$ sidekiq-r --report all`
 
 ### See the usage message, including all known sections
 
-`$ sidekiq_status --help`
+`$ sidekiq-r --help`
 
 ## Development
 
@@ -62,7 +62,7 @@ Alternatively
 
 ``` sh
 # get a bash session in the docker container
-docker-compose run --rm sidekiq_status bash
+docker-compose run --rm sidekiq-r bash
 ```
 
 Then, run `bundle exec rspec` or `rake spec` to run the tests.
@@ -75,7 +75,7 @@ To release a new version, update the version number in `version.rb`, and then ru
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/camallen/sidekiq_status. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/camallen/sidekiq_status/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/camallen/sidekiq-r. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/camallen/sidekiq-r/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -83,4 +83,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the sidekiq_status project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/camallen/sidekiq_status/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the sidekiq-r project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/camallen/sidekiq-r/blob/master/CODE_OF_CONDUCT.md).
