@@ -43,7 +43,7 @@ RSpec.describe SidekiqStatus do
 
     it 'calls the view object with the default' do
       described_class.status
-      expect(view_double).to have_received(:display).with('processes')
+      expect(view_double).to have_received(:display).with('all')
     end
 
     it 'calls the view object with the section param' do
