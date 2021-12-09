@@ -14,8 +14,10 @@ The above can be used in combination with a Kubernetes liveness probe as it retu
 livenessProbe:
   exec:
     command:
-      - sidekiq-err --alive
+      - sidekiq-err --alive $HOSTNAME
 ```
+
+$HOSTNAME env var in a pod correlates to the default name that Sidekiq uses to identify the sever processes.
 
 ## Installation
 
@@ -39,7 +41,7 @@ This gem depends on your Sidekiq setup, e.g. REDIS_URL etc, please ensure this i
 
 ### Test if a Sidekiq server is running
 
-`$ sidekiq-err --alive`
+`$ sidekiq-err --alive expected-process-name`
 
 This returns a non-zero exit code if sidekiq isn't running or Redis not available
 
