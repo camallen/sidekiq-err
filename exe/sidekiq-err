@@ -10,7 +10,13 @@ require 'pry' if ENV.fetch('USE_PRY', false)
 begin
   case ARGV[0]
   when '-a', '--alive'
-    SidekiqErr.alive?
+    if ARGV[1]
+      SidekiqErr.alive?(ARGV[1])
+    else
+      puts
+      puts 'Missing hostname argument, use --help for usage details'
+      puts
+    end
   when '-r', '--report'
     SidekiqErr.status(ARGV[1])
   when '-h', '--help'
