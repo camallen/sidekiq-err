@@ -32,7 +32,7 @@ module SidekiqErr
     SidekiqErr::View.new(section).display
   end
 
-  def self.alive?
-    SidekiqErr::Alive.check?
+  def self.alive?(hostname)
+    SidekiqErr::Alive.check?(hostname)
   end
 end

@@ -56,4 +56,12 @@ RSpec.describe SidekiqErr do
       expect(SidekiqErr::View).to have_received(:new).with('test')
     end
   end
+
+  describe '.alive?' do
+    it 'correctly calls the check? method with hostname param' do
+      allow(SidekiqErr::Alive).to receive(:check?)
+      described_class.alive?('test')
+      expect(SidekiqErr::Alive).to have_received(:check?).with('test')
+    end
+  end
 end
