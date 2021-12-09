@@ -64,7 +64,7 @@ RSpec.describe SidekiqStatus::View do
     it 'raises if a sidekiq server is not running' do
       process_set_double = instance_double(Sidekiq::ProcessSet, size: 0)
       allow(Sidekiq::ProcessSet).to receive(:new).and_return(process_set_double)
-      expect { view_instance.display }.to raise_error(SidekiqStatus::View::NoProcessFound, 'No sidekiq process running!')
+      expect { view_instance.display }.to raise_error(SidekiqStatus::NoProcessFound, 'No sidekiq process running!')
     end
 
     it 'calls the revelant section method' do
@@ -92,7 +92,7 @@ RSpec.describe SidekiqStatus::View do
     it 'raises if a sidekiq server is not running' do
       process_set_double = instance_double(Sidekiq::ProcessSet, size: 0)
       allow(Sidekiq::ProcessSet).to receive(:new).and_return(process_set_double)
-      expect { view_instance.all }.to raise_error(SidekiqStatus::View::NoProcessFound, 'No sidekiq process running!')
+      expect { view_instance.all }.to raise_error(SidekiqStatus::NoProcessFound, 'No sidekiq process running!')
     end
   end
 
