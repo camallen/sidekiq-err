@@ -12,9 +12,9 @@ RSpec.describe SidekiqErr do
 
         Usage: sidekiq-err
 
-               -a, --alive
-                 check if at least 1 Sidekiq process is running
-                 sets the exit code to 1 if no process if found
+               -a, --alive HOSTNAME
+                 check if the HOSTNAME is presetn in the Sidekiq process list
+                 sets the exit code to 1 if the HOSTNAME process is not found
 
                -r, --report [SECTION_NAME]
                  view the status report
