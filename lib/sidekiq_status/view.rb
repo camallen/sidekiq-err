@@ -2,8 +2,7 @@
 
 module SidekiqStatus
   class View
-    class InvalidSection < StandardError; end
-    class NoProcessFound < StandardError; end
+    class InvalidSection < SidekiqStatus::Error; end
 
     def self.valid_sections
       @valid_sections ||= %w[all version overview processes queues].freeze
@@ -18,13 +17,13 @@ module SidekiqStatus
         raise(InvalidSection, msg)
       end
 
-      raise(NoProcessFound, 'No sidekiq process running!') if process_set.size.zero?
+      raise(SidekiqStatus::NoProcessFound, 'No sidekiq process running!') if process_set.size.zero?
 
       send(section)
     end
 
     def all
-      raise(NoProcessFound, 'No sidekiq process running!') if process_set.size.zero?
+      raise(SidekiqStatus::NoProcessFound, 'No sidekiq process running!') if process_set.size.zero?
 
       version
       puts
