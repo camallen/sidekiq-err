@@ -1,11 +1,27 @@
 #!/usr/bin/env ruby
 
+# frozen_string_literal: true
+
 require 'sidekiq_status'
 
 require 'pry' if ENV.fetch('USE_PRY', false)
 
-if ARGV[0] == '--help'
-  SidekiqStatus.print_usage
-else
-  SidekiqStatus.status(ARGV[0])
+# main entry point
+begin
+  case ARGV[0]
+  when '-a', '--alive'
+    SidekiqStatus.alive?
+  when '-r', '--report'
+    SidekiqStatus.status(ARGV[1])
+  when '-h', '--help'
+    SidekiqStatus.print_usage
+  else
+    puts
+    puts 'Uknown command, use --help for usage details'
+    puts
+  end
+rescue SidekiqStatus::Error => e
+  puts "Error: #{e.message}"
+  puts
+  exit(1)
 end

@@ -8,15 +8,19 @@ RSpec.describe SidekiqStatus do
   describe '.print_usage' do
     let(:expected_output) do
       <<~USAGE
-        sidekiq_status - Sidekiq process stats from the command line.
+        sidekiq_status - Sidekiq process reporting.
 
-        Usage: sidekiq_status [-q] [section]
+        Usage: sidekiq_status
 
-               [-q] (optional) do not output text data, rely on exit codes
+               -a, --alive
+                 check if at least 1 Sidekiq process is running
+                 sets the exit code to 1 if no process if found
 
-               [section] (optional) view a specific section of the status output
-               Valid sections are: all, version, overview, processes, queues
-               Default is 'processes'
+               -r, --report [SECTION_NAME]
+                 view the status report
+                 SECTION_NAME is optional and filters the report to a specific section
+                 Valid sections are: all, version, overview, processes, queues
+                 Default is 'all'
 
       USAGE
     end
