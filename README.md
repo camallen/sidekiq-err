@@ -1,4 +1,5 @@
-# sidekiq-err
+# sidekiq-err ![Build Status](https://github.com/camallen/sidekiq-err/actions/workflows/run_tests_CI.yml/badge.svg?branch=master)
+
 
 Report the status of your sidekiq system
 
